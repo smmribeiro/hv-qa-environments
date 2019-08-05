@@ -1,0 +1,7 @@
+configs:
+    use: 'default'
+    chrome: 'C:\\Users\\jeruiz\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe'
+    name: 'BISERVER-13804-ubuntu-server-16-7.1.0.26-ga-silent'
+    default:
+        public_ip: '7.1.0.26'
+        port: 8080
