@@ -1,7 +1,6 @@
 configs:
     use: 'default'
-    chrome: 'C:\\Users\\jeruiz\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe'
-    name: 'BISERVER-13804-ubuntu-server-18-8.3-ga-silent'
+    name: 'hitachi-vantara-qa-environment-ubuntu-18.04'
     default:
-        public_ip: '8.3.0.0'
+        public_ip: '1.8.0.4'
         port: 8080

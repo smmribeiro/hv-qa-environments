@@ -1,0 +1,52 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+unless Vagrant.has_plugin?("vagrant-reload")
+	system("vagrant plugin install vagrant-reload")
+	puts "Dependencies installed, starting machine again"
+	system("vagrant up")
+	exit
+end
+
+current_dir    = File.dirname(File.expand_path(__FILE__))
+configs        = YAML.load_file("#{current_dir}/config.yaml")
+vagrant_config = configs['configs'][configs['configs']['use']]
+
+console_message  = "the app will be avilable in #{vagrant_config['public_ip']}:#{vagrant_config['port']}"
+
+NAME = configs['configs']['name']
+
+Vagrant.configure("2") do |config|
+	config.vm.box = "ubuntu/bionic64"
+	config.vm.define NAME
+	config.vm.network "private_network", ip: vagrant_config['public_ip']
+
+	config.vm.provider :virtualbox do |vb|
+		vb.gui = true
+		vb.name = NAME
+		vb.customize ["modifyvm", :id, "--cpus", "1"]
+		vb.customize ["modifyvm", :id, "--memory", "4096"]
+		vb.customize ["modifyvm", :id, "--vram", "256"]
+		vb.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
+		vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+		vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+	end
+
+	config.vm.synced_folder "./../../builds", "/host/builds"
+	config.vm.synced_folder "./../../java", "/host/java"
+	config.vm.synced_folder "./../../scripts", "/host/scripts"
+
+	config.vm.provision :shell, path: "./../../scripts/ubuntu/update.sh", args: []
+	config.vm.provision :shell, path: "./../../scripts/ubuntu/install-vb-guest-tools.sh", args: []
+	config.vm.provision :shell, path: "./../../scripts/ubuntu/install-gui.sh", args: ["18.04"]
+	config.vm.provision :shell, path: "./../../scripts/ubuntu/install-gnome-terminal.sh", args: []
+	config.vm.provision :shell, path: "./../../scripts/ubuntu/install-java.sh", args: ["8", "18.04"]
+	config.vm.provision :shell, path: "./../../scripts/ubuntu/install-chrome.sh", args: []
+	config.vm.provision :shell, path: "./../../scripts/ubuntu/extras.sh", args: []
+	config.vm.provision :shell, path: "./../../scripts/ubuntu/compile-automated-tests.sh", args: []
+	config.vm.provision :reload
+
+	config.vm.provision :host_shell do |host_shell|
+		host_shell.inline = "echo #{console_message}"
+	end
+end
