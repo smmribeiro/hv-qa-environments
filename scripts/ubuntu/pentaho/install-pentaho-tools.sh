@@ -7,7 +7,7 @@ echo "input param 4 = $4"
 
 if [ "$1" == "7.1" ] ; then
   echo "installing 7.1 GA tools"
-  sh /host/scripts/ubuntu/pentaho/install-7.1-ga.sh
+  runuser -l vagrant -c 'sh /host/scripts/ubuntu/pentaho/install-7.1-ga.sh'
 
   if [ ! -z "$2" ]; then
     echo "downloading service pack $2 from box"
@@ -16,10 +16,10 @@ if [ "$1" == "7.1" ] ; then
     SERVER_SP="PentahoServer-SP-$2.bin"
 
     cd /host/java/
-    java -cp .:selenium-server-standalone-3.13.0.jar DownloadServicePackTest '$3' '$4' '$PDI_SP' 'headless'
-    java -cp .:selenium-server-standalone-3.13.0.jar DownloadServicePackTest '$3' '$4' '$SERVER_SP' 'headless'
+    java -cp .:selenium-server-standalone-3.13.0.jar DownloadServicePackTest "$3" "$4" "$PDI_SP" "headless"
+    java -cp .:selenium-server-standalone-3.13.0.jar DownloadServicePackTest "$3" "$4" "$SERVER_SP" "headless"
 
     echo "installing $2 service pack"
-    sh /host/scripts/ubuntu/pentaho/install-7.1-ga-plus-sp.sh $2
+    runuser -l vagrant -c 'sh /host/scripts/ubuntu/pentaho/install-7.1-ga-plus-sp.sh' $2
   fi
 fi

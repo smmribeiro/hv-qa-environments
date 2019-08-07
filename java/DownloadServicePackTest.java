@@ -18,8 +18,13 @@ public class DownloadServicePackTest {
 		}
 
 		String boxUsername = arguments[0];
+		System.out.println("boxUsername" + " = " + boxUsername);
+
 		String boxPassword = arguments[1];
+		System.out.println("boxPassword" + " = " + boxPassword);
+
 		String servicePack = arguments[2];
+		System.out.println("servicePack" + " = " + servicePack);
 
 		String filePath = "/host/builds/sp/" + servicePack;
 		File file = new File( filePath );
