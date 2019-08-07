@@ -1,11 +1,10 @@
 #!/bin/bash
 
-INPUT_PATCH_VERSION=$1
-
-if [ -z "$INPUT_PATCH_VERSION" ] ; then
+if [ -z "$1" ]; then
   INPUT_PATCH_VERSION=7.1.0.26-212
   echo "patch version defaulted to $INPUT_PATCH_VERSION"
 else
+  INPUT_PATCH_VERSION=$1
   echo "patch version defined by user as $INPUT_PATCH_VERSION"
 fi
 
@@ -26,3 +25,5 @@ $INSTALLERS_BASE/PDIClient-SP-$PATCH_VERSION.bin -i silent -DEULA_ACCEPT=true -D
 
 echo "Patching pentaho-server with $PATCH_VERSION"
 $INSTALLERS_BASE/PentahoServer-SP-$PATCH_VERSION.bin -i silent -DEULA_ACCEPT=true -DUSER_INSTALL_DIR=$PENTAHO_TO_PATCH/server/pentaho-server -DSILENT_LOG=$LOG_BASE/pentaho-server.log
+
+exit 0

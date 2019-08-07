@@ -20,6 +20,7 @@ if [ "$1" == "7.1" ] ; then
     java -cp .:selenium-server-standalone-3.13.0.jar DownloadServicePackTest "$3" "$4" "$SERVER_SP" "headless"
 
     echo "installing $2 service pack"
-    runuser -l vagrant -c 'sh /host/scripts/ubuntu/pentaho/install-7.1-ga-plus-sp.sh' $2
+
+    su -l vagrant -c "sh /host/scripts/ubuntu/pentaho/install-7.1-ga-plus-sp.sh '$2'"
   fi
 fi
