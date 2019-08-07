@@ -9,6 +9,7 @@ configs:
       major: '7.1'
       minor: '7.1.0.26-212'
     base_os: 'ubuntu/bionic64'
+    disk_size: '20GB'
     os_version: '18.04'
     public_ip: '1.8.0.4'
     port: '8080'

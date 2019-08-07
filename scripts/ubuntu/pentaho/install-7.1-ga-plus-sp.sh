@@ -11,7 +11,7 @@ fi
 export INSTALLERS_BASE=/host/builds/sp/
 export PENTAHO_TO_PATCH=/home/vagrant/Pentaho/
 export PATCH_VERSION=$INPUT_PATCH_VERSION
-export LOG_BASE=/tmp/$PATCH_VERSION
+export LOG_BASE=/host/logs/$PATCH_VERSION
 
 if [ -e $LOG_BASE ]; then
 	echo "logs folder already exists"
