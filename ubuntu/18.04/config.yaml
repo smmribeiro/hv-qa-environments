@@ -1,6 +1,21 @@
 configs:
-    use: 'default'
-    name: 'hitachi-vantara-qa-environment-ubuntu-18.04'
-    default:
-        public_ip: '1.8.0.4'
-        port: 8080
+  use: 'default'
+  name: 'hitachi-vantara-qa-environment-ubuntu-18.04'
+  box:
+    username: ''
+    password: ''
+  default:
+    test:
+      major: '7.1'
+      minor: '7.1.0.26-212'
+    base_os: 'ubuntu/bionic64'
+    os_version: '18.04'
+    public_ip: '1.8.0.4'
+    port: '8080'
+    java_version: '8'
+    cpus: '2'
+    memory: '8192'
+    vram: '256'
+    clipboard: 'bidirectional'
+    natdnshostresolver1: 'on'
+    natdnsproxy1: 'on'

@@ -2,6 +2,7 @@
 echo "installing google chrome"
 
 # https://serverfault.com/questions/500764/dpkg-reconfigure-unable-to-re-open-stdin-no-file-or-directory
+# dpkg-preconfigure: unable to re-open stdin: No such file or directory
 # dpkg-reconfigure: unable to re-open stdin: No file or directory
 export DEBIAN_FRONTEND=noninteractive
 
@@ -20,7 +21,12 @@ sudo mv /tmp/chromedriver /usr/bin/chromedriver
 sudo chown root:root /usr/bin/chromedriver
 sudo chmod +x /usr/bin/chromedriver
 
-echo "installing selenium server jar file"
+echo "downloading selenium server jar file"
 
-# Download Required Jar Files
-wget --quiet https://selenium-release.storage.googleapis.com/3.13/selenium-server-standalone-3.13.0.jar -O /tmp/selenium-server-standalone-3.13.0.jar
+FILE=/host/java/selenium-server-standalone-3.13.0.jar
+
+if [ -f "$FILE" ]; then
+  echo "$FILE exists, moving on"
+else
+  curl https://selenium-release.storage.googleapis.com/3.13/selenium-server-standalone-3.13.0.jar -o $FILE
+fi
