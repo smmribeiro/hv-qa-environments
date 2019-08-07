@@ -5,8 +5,12 @@ echo "input param 2 = $2"
 echo "input param 3 = $3"
 echo "input param 4 = $4"
 
+me="$(whoami)"
+echo "current user = $me"
+
 if [ "$1" == "7.1" ] ; then
   echo "installing 7.1 GA tools"
+  # todo: check whoami into variable, if vagrant, don't use runuser
   runuser -l vagrant -c 'sh /host/scripts/ubuntu/pentaho/install-7.1-ga.sh'
 
   if [ ! -z "$2" ]; then
@@ -20,7 +24,7 @@ if [ "$1" == "7.1" ] ; then
     java -cp .:selenium-server-standalone-3.13.0.jar DownloadServicePackTest "$3" "$4" "$SERVER_SP" "headless"
 
     echo "installing $2 service pack"
-
+    # todo: check whoami into variable, if vagrant, don't use su
     su -l vagrant -c "sh /host/scripts/ubuntu/pentaho/install-7.1-ga-plus-sp.sh '$2'"
   fi
 fi
