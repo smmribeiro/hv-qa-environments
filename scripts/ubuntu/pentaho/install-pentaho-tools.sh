@@ -19,7 +19,7 @@ if [ "$1" == "7.1" ] ; then
   echo "installing 7.1 GA tools"
 
   if [ "$me" == "root" ] ; then
-    runuser -l vagrant -c 'sh /host/scripts/ubuntu/pentaho/install-7.1-ga.sh'
+    su -l vagrant -c "sh /host/scripts/ubuntu/pentaho/install-7.1-ga.sh"
   fi
 
   if [ "$me" == "vagrant" ] ; then
@@ -86,6 +86,8 @@ if [ "$1" == "7.1" ] ; then
     if [ "$me" == "vagrant" ] ; then
       sh /host/scripts/ubuntu/pentaho/install-7.1-ga-plus-sp.sh "$2"
     fi
+  else
+    echo "minor version not specified, moving on"
   fi
 fi
 

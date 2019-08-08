@@ -32,7 +32,7 @@ Be sure to review the contents of the config.yaml file
 | test | | This is reserved to define the machine major and minor versions of the suite to be installed |
 | major | | Major version to be installed automatically during the machine provisioning |
 | minor | :heavy_check_mark: | Minor version to be installed automatically during the machine provisioning |
-| base_os | | Defines the image of the OS to be used in the machine. The current one will be **ubuntu/xenial64** for Ubuntu Server 16.04 LTS. Read more about it here: https://app.vagrantup.com/boxes/search |
+| base_os | | Defines the image of the OS to be used in the machine. The current one will be **ubuntu/bionic64** for Ubuntu Server 16.04 LTS. Read more about it here: https://app.vagrantup.com/boxes/search |
 | disk_size | | Defines the size of the virtual machine disk |
 | os_version | | Defines the version of the virtual machine OS distro |
 | public_ip | | Defines the of the virtual machine to be accessed from the host machine |
