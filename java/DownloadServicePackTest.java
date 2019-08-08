@@ -13,7 +13,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class DownloadServicePackTest {
 	public static void main ( String arguments[] ) throws Exception {
 		if ( arguments.length < 3 ) {
-			System.out.println( "The right way of calling this file is: DownloadServicePackTest box-username box-password service-pack" );
+			System.out.println( "The right way of calling this file is: DownloadServicePackTest box-username box-password service-pack [headless]" );
 			System.exit( 1 );
 		}
 

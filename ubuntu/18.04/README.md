@@ -10,6 +10,14 @@ http://cloud-images.ubuntu.com/bionic/
 config.vm.box = "ubuntu/bionic64"
 ```
 
+## Instructions
+
+After you have installed VirtualBox and Vagrant, and setup the config.yaml file, then from your console of preference run:
+
+```shell
+vagrant up
+```
+
 ## Configuration
 
 Be sure to review the contents of the config.yaml file
