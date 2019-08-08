@@ -47,6 +47,8 @@ if [ "$1" == "7.1" ] ; then
       cd /host/java/
 
       java -cp .:selenium-server-standalone-3.13.0.jar DownloadServicePackTest "$3" "$4" "$PDI_SP" "headless"
+    else
+      echo "$PDI_SP already exists, no need to download"
     fi
 
     # check if the service pack already exists in the builds folder
@@ -67,6 +69,8 @@ if [ "$1" == "7.1" ] ; then
       cd /host/java/
 
       java -cp .:selenium-server-standalone-3.13.0.jar DownloadServicePackTest "$3" "$4" "$SERVER_SP" "headless"
+    else
+      echo "$SERVER_SP already exists, no need to download"
     fi
 
     echo "installing $2 service packs"
