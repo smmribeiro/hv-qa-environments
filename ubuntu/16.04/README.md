@@ -12,7 +12,7 @@ config.vm.box = "ubuntu/xenial64"
 
 ## Instructions
 
-After you have installed VirtualBox and Vagrant, and setup the config.yaml file, then from your console of preference, run:
+After you have installed VirtualBox and Vagrant, and setup the config.yaml file, then from your console of preference run:
 
 ```shell
 vagrant up
