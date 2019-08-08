@@ -6,8 +6,8 @@ configs:
     password: ''
   default:
     test:
-      major: '7.1'
-      minor: '7.1.0.26-212'
+      major: '8.3'
+      minor: '8.3.0.1-435'
     base_os: 'ubuntu/bionic64'
     disk_size: '20GB'
     os_version: '18.04'
