@@ -20,3 +20,5 @@ fi
 
 echo "installing 7.1 no questions"
 printf '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ny\n1\n\n1234567890\n1234567890\n\nn\nn\n' | /host/builds/business-analytics/pentaho-business-analytics-7.1.0.0-12-x64.bin
+
+cp /host/scripts/ubuntu/pentaho/debug-start-spoon-7.1.sh /home/vagrant/Pentaho/design-tools/data-integration/spoon.sh

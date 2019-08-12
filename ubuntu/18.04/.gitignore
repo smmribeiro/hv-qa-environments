@@ -2,4 +2,4 @@
 .vagrant/
 custom
 *.jar
-ubuntu-bionic-18.04-cloudimg-console.log
+*.log

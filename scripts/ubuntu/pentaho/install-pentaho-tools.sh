@@ -9,6 +9,7 @@ if [ ! -z "$2" ]; then
   echo "downloading service pack $2 from box"
 
   PDI_SP="PDIClient-SP-$2.bin"
+  echo "PDI_SP = $PDI_SP"
 
   # check if the service pack already exists in the builds folder
   if [ ! -e /host/builds/sp/$PDI_SP ]; then
@@ -31,6 +32,7 @@ if [ ! -z "$2" ]; then
   fi
 
   SERVER_SP="PentahoServer-SP-$2.bin"
+  echo "SERVER_SP = $SERVER_SP"
 
   # check if the service pack already exists in the builds folder
   if [ ! -e /host/builds/sp/$SERVER_SP ]; then
@@ -61,29 +63,51 @@ echo "current user = $me"
 if [ ! -z "$1" ]; then
   echo "installing $1 GA tools"
 
+  GA_SCRIPT_PATH="/host/scripts/ubuntu/pentaho/install-$1-ga.sh"
+  echo "GA_SCRIPT_PATH = $GA_SCRIPT_PATH"
+
+  if [ -e $GA_SCRIPT_PATH ]; then
+      echo "installer for $1 exists, moving on"
+  else
+      echo "installer for $1 not found, process aborted"
+      exit 1
+  fi
+
   if [ "$me" = "root" ] ; then
-    su -l vagrant -c "bash /host/scripts/ubuntu/pentaho/install-$1-ga.sh"
+    su -l vagrant -c "sh $GA_SCRIPT_PATH"
   fi
 
   if [ "$me" = "vagrant" ] ; then
-    bash /host/scripts/ubuntu/pentaho/install-$1-ga.sh
+    sh $GA_SCRIPT_PATH
   fi
 
   if [ ! -z "$2" ]; then
     echo "installing $2 service packs"
+
+    SP_SCRIPT_PATH="/host/scripts/ubuntu/pentaho/install-$1-sp.sh"
+    echo "SP_SCRIPT_PATH = $SP_SCRIPT_PATH"
+
+    if [ -e $SP_SCRIPT_PATH ]; then
+        echo "installer for $1 sp exists, moving on"
+    else
+        echo "installer for $1 sp not found, process aborted"
+        exit 1
+    fi
 
     # https://stackoverflow.com/questions/3510673/find-and-kill-a-process-in-one-line-using-bash-and-regex/3510850#3510850
     kill $(ps aux | grep '[p]ostgres.bin' | awk '{print $2}')
     kill $(ps aux | grep '[t]omcat' | awk '{print $2}')
 
     if [ "$me" = "root" ] ; then
-      su -l vagrant -c "bash /host/scripts/ubuntu/pentaho/install-$1-ga-plus-sp.sh '$2'"
+      su -l vagrant -c "sh $SP_SCRIPT_PATH '$2'"
     fi
 
     if [ "$me" = "vagrant" ] ; then
-      bash /host/scripts/ubuntu/pentaho/install-$1-ga-plus-sp.sh "$2"
+      sh $SP_SCRIPT_PATH "$2"
     fi
   fi
+else
+  echo "no major version specified, nothing to install, moving on"
 fi
 
 exit 0
