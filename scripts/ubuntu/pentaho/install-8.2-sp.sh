@@ -37,3 +37,5 @@ $INSTALLERS_BASE/ReportDesigner-SP-$PATCH_VERSION.bin -i silent -DEULA_ACCEPT=tr
 
 echo "Patching schema-workbench with $PATCH_VERSION"
 $INSTALLERS_BASE/SchemaWorkbench-SP-$PATCH_VERSION.bin -i silent -DEULA_ACCEPT=true -DUSER_INSTALL_DIR=$PENTAHO_TO_PATCH/design-tools/schema-workbench -DSILENT_LOG=$LOG_BASE/schema-workbench.log
+
+rm -rf /home/vagrant/Pentaho/design-tools/data-integration/system/karaf/caches
