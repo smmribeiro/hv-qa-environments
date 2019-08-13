@@ -17,6 +17,7 @@ NAME = configs['configs']['name']
 
 Vagrant.configure("2") do |config|
 	config.vm.box = vagrant_config['base_os']
+	config.vm.box_version = vagrant_config['box_version']
 	config.vm.define NAME
 	config.vm.network "private_network", ip: vagrant_config['public_ip']
 

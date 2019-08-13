@@ -1,18 +1,18 @@
 configs:
   use: 'default'
-  name: 'hitachi-vantara-qa-environment-ubuntu-18.04'
+  name: 'VM_NAME'
   box:
     username: ''
     password: ''
   default:
     test:
-      major: '7.1'
-      minor: '7.1.0.26-212'
-    base_os: 'ubuntu/bionic64'
-    box_version: '20190621.0.0'
+      major: 'VM_TEST_MAJOR_VERSION'
+      minor: 'VM_TEST_MINOR_VERSION'
+    base_os: 'VM_BASE_OS'
+    box_version: 'VM_BOX_VERSION'
     disk_size: '20GB'
-    os_version: '18.04'
-    public_ip: '1.8.0.4'
+    os_version: 'VM_OS_VERSION'
+    public_ip: 'VM_IP_ADDRESS'
     port: '8080'
     java_version: '8'
     cpus: '2'

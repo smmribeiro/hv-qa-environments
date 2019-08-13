@@ -9,6 +9,7 @@ configs:
       major: '7.1'
       minor: '7.1.0.26-212'
     base_os: 'ubuntu/xenial64'
+    box_version: '20190621.0.0'
     disk_size: '20GB'
     os_version: '16.04'
     public_ip: '1.6.0.4'
