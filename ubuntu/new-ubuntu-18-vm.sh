@@ -10,6 +10,13 @@
 # https://app.vagrantup.com/ubuntu/boxes/bionic64/versions/20190731.0.0 -> 20190731.0.0
 # This parameter can be empty and the last available version will be assumed or the local one if any
 
+if [[ -z $0 || -z $1 || -z $2 ]]; then
+  me=`basename "$0"`
+
+  echo "right usage: $0 folder-and-vm-name major-version-to-test minor-version-to-test [vm-box-version]"
+  exit 1
+fi
+
 mkdir $1
 cp base/config.yaml $1/config.yaml
 cp base/Vagrantfile $1/Vagrantfile
