@@ -39,6 +39,7 @@ Vagrant.configure("2") do |config|
 	config.vm.synced_folder "./../../licenses", "/host/licenses"
 	config.vm.synced_folder "./../../logs", "/host/logs"
 	config.vm.synced_folder "./../../scripts", "/host/scripts"
+	config.vm.synced_folder "./../../shared", "/host/shared"
 
 	test_block = vagrant_config['test']
 	major = test_block['major']
