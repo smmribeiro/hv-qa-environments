@@ -18,6 +18,9 @@
 !logs/.gitignore
 
 !scripts/
+!scripts/patch-validation/
+!scripts/patch-validation/logging_config.ini
+!scripts/patch-validation/run.py
 !scripts/ubuntu/
 !scripts/ubuntu/nocrc/
 !scripts/ubuntu/nocrc/.gitignore
