@@ -30,7 +30,7 @@
 !scripts/ubuntu/.gitignore
 !scripts/ubuntu/*.sh
 
-!shared
+!shared/
 !shared/.gitignore
 
 !ubuntu/
