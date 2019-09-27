@@ -1,6 +1,18 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+unless Vagrant.has_plugin?("vagrant-disksize")
+	system("vagrant plugin install vagrant-disksize")
+	puts "Dependencies installed, try again"
+	exit
+end
+
+unless Vagrant.has_plugin?("vagrant-host-shell")
+	system("vagrant plugin install vagrant-host-shell")
+	puts "Dependencies installed, try again"
+	exit
+end
+
 unless Vagrant.has_plugin?("vagrant-reload")
 	system("vagrant plugin install vagrant-reload")
 	puts "Dependencies installed, try again"
