@@ -30,8 +30,8 @@
 !scripts/ubuntu/.gitignore
 !scripts/ubuntu/*.sh
 
-!shared/
-!shared/.gitignore
+shared/*
+!shared/.gitkeep
 
 !ubuntu/
 !ubuntu/16.04/*
