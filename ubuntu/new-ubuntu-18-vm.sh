@@ -25,5 +25,5 @@ sed -i "s/VM_TEST_MAJOR_VERSION/$2/g" $1/config.yaml
 sed -i "s/VM_TEST_MINOR_VERSION/$3/g" $1/config.yaml
 sed -i "s/VM_BASE_OS/ubuntu\/bionic64/g" $1/config.yaml
 sed -i "s/VM_BOX_VERSION/$4/g" $1/config.yaml
-sed -i "s/VM_OS_VERSION/16.04/g" $1/config.yaml
+sed -i "s/VM_OS_VERSION/18.04/g" $1/config.yaml
 sed -i "s/VM_IP_ADDRESS/192.168.100.100/g" $1/config.yaml
