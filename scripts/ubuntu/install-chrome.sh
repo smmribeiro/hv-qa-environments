@@ -28,5 +28,5 @@ FILE=/host/java/selenium-server-standalone-3.13.0.jar
 if [ -f "$FILE" ]; then
   echo "$FILE exists, moving on"
 else
-  curl https://selenium-release.storage.googleapis.com/3.13/selenium-server-standalone-3.13.0.jar -o $FILE
+  curl --silent https://selenium-release.storage.googleapis.com/3.13/selenium-server-standalone-3.13.0.jar -o $FILE
 fi
