@@ -3,17 +3,17 @@
 # $1 = folder name / vm name
 # $2 = Pentaho major version to test
 # $3 = Pentaho minor version to test
-# [$4] = vm box version - https://app.vagrantup.com/ubuntu/boxes/bionic64/[version]
+# $4 = vm box version - https://app.vagrantup.com/ubuntu/boxes/bionic64/[version]
 # for example:
-# https://app.vagrantup.com/ubuntu/boxes/bionic64/versions/20190807.0.0 -> 20190807.0.0
-# https://app.vagrantup.com/ubuntu/boxes/bionic64/versions/20190801.1.0 -> 20190801.1.0
-# https://app.vagrantup.com/ubuntu/boxes/bionic64/versions/20190731.0.0 -> 20190731.0.0
+# https://app.vagrantup.com/ubuntu/boxes/bionic64/versions/20191021.0.0 -> "20191021.0.0"
+# https://app.vagrantup.com/ubuntu/boxes/bionic64/versions/20191018.0.0 -> "20191018.0.0"
+# https://app.vagrantup.com/ubuntu/boxes/bionic64/versions/20191014.0.0 -> "20191014.0.0"
 # This parameter can be empty and the last available version will be assumed or the local one if any
 
-if [[ -z $0 || -z $1 || -z $2 ]]; then
+if [[ -z $1 || -z $2 || -z $3 || -z $4 ]]; then
   me=`basename "$0"`
 
-  echo "right usage: $0 folder-and-vm-name major-version-to-test minor-version-to-test [vm-box-version]"
+  echo "right usage: $0 folder-and-vm-name major-version-to-test minor-version-to-test vm-box-version"
   exit 1
 fi
 
