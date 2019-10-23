@@ -17,7 +17,7 @@ sudo python -m pip install jupyter
 sudo jupyter --version
 
 # https://jupyter-notebook.readthedocs.io/en/latest/config.html
-sudo jupyter notebook --generate-config
+runuser -l vagrant -c 'jupyter notebook --generate-config'
 
 # vim /home/vagrant/.jupyter/jupyter_notebook_config.py
 
