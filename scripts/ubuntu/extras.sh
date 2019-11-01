@@ -5,7 +5,7 @@ echo "installing extra packages"
 UBUNTU_VERSION=$1
 
 if [ -z "$UBUNTU_VERSION" ]; then
-  $UBUNTU_VERSION="16.04"
+  UBUNTU_VERSION="16.04"
 fi
 
 sudo apt-get install -y firefox > /dev/null 2>&1
