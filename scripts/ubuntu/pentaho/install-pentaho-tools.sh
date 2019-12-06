@@ -4,6 +4,7 @@ echo "input param 1 = $1" # major version
 echo "input param 2 = $2" # minor version
 echo "input param 3 = $3" # box username
 echo "input param 4 = $4" # box password
+echo "input param 5 = $5" # patch version override path
 
 if [ ! -z "$2" ]; then
   echo "downloading service pack $2 from box"
@@ -99,11 +100,11 @@ if [ ! -z "$1" ]; then
     kill $(ps aux | grep '[t]omcat' | awk '{print $2}')
 
     if [ "$me" = "root" ] ; then
-      su -l vagrant -c "sh $SP_SCRIPT_PATH '$2'"
+      su -l vagrant -c "sh $SP_SCRIPT_PATH '$2' '$5'"
     fi
 
     if [ "$me" = "vagrant" ] ; then
-      sh $SP_SCRIPT_PATH "$2"
+      sh $SP_SCRIPT_PATH "$2" "$5"
     fi
   fi
 else

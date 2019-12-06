@@ -43,4 +43,9 @@ rm -rf /home/vagrant/Pentaho/design-tools/data-integration/system/karaf/caches
 rm -rf /home/vagrant/Pentaho/server/pentaho-server/pentaho-solutions/system/karaf/caches
 
 # validate installation of service pack
-find /home/vagrant/Pentaho/*/*/.patch_archive/$PATCH_VERSION/ -name *.log | while read FILE; do echo $FILE && cat $FILE | grep Successes && cat $FILE | grep Warnings && cat $FILE | grep NonFatalErrors && cat $FILE | grep FatalErrors && echo "" ; done
+
+if [ -z "$2" ]; then
+  find /home/vagrant/Pentaho/*/*/.patch_archive/$PATCH_VERSION/ -name *.log | while read FILE; do echo $FILE && cat $FILE | grep Successes && cat $FILE | grep Warnings && cat $FILE | grep NonFatalErrors && cat $FILE | grep FatalErrors && echo "" ; done
+else
+  find /home/vagrant/Pentaho/*/*/.patch_archive/$2/ -name *.log | while read FILE; do echo $FILE && cat $FILE | grep Successes && cat $FILE | grep Warnings && cat $FILE | grep NonFatalErrors && cat $FILE | grep FatalErrors && echo "" ; done
+fi
