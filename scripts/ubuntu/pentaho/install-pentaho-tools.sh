@@ -5,6 +5,7 @@ echo "input param 2 = $2" # minor version
 echo "input param 3 = $3" # box username
 echo "input param 4 = $4" # box password
 echo "input param 5 = $5" # patch version override path
+echo "input param 6 = $6" # dist
 
 if [ ! -z "$2" ]; then
   echo "downloading service pack $2 from box"
@@ -109,6 +110,33 @@ if [ ! -z "$1" ]; then
   fi
 else
   echo "no major version specified, nothing to install, moving on"
+fi
+
+# if-else block to install dist builds
+if [ ! -z "$6" ]; then
+  DIST_SCRIPT_PATH="/host/scripts/ubuntu/pentaho/install-dist.sh"
+  echo "DIST_SCRIPT_PATH = $DIST_SCRIPT_PATH"
+
+  if [ -e $DIST_SCRIPT_PATH ]; then
+      echo "installer for dist exists, moving on"
+  else
+      echo "installer for dist not found, process aborted"
+      exit 1
+  fi
+
+  # https://stackoverflow.com/questions/3510673/find-and-kill-a-process-in-one-line-using-bash-and-regex/3510850#3510850
+  kill $(ps aux | grep '[p]ostgres.bin' | awk '{print $2}')
+  kill $(ps aux | grep '[t]omcat' | awk '{print $2}')
+
+  if [ "$me" = "root" ] ; then
+    su -l vagrant -c "sh $DIST_SCRIPT_PATH '$6'"
+  fi
+
+  if [ "$me" = "vagrant" ] ; then
+    sh $DIST_SCRIPT_PATH "$6"
+  fi
+else
+  echo "no dist, nothing to install, moving on"
 fi
 
 exit 0
