@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -z "$1" ]; then
-  INPUT_PATCH_VERSION=7.1.0.26-212
+  INPUT_PATCH_VERSION=7.1.0.31-240
   echo "patch version defaulted to $INPUT_PATCH_VERSION"
 else
   INPUT_PATCH_VERSION=$1
