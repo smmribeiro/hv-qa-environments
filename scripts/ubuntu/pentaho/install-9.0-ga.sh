@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GA_FILE=pentaho-business-analytics-9.0.0.0-312-x64
+GA_FILE=pentaho-business-analytics-9.0.0.0-378-x64
 HOST_GA_FOLDER=/host/builds/business-analytics/
 HOST_ZIP_FILE=$HOST_GA_FOLDER$GA_FILE.zip
 BUILD_HOST=http://build.pentaho.net/hosted
@@ -19,7 +19,7 @@ else
   if curl --head --silent --fail $BUILD_HOST 2> /dev/null; then
     echo "Could connect to $BUILD_HOST, moving on"
 
-    curl $BUILD_HOST/engops/9.0.0.0/312/$GA_FILE.bin -o $GA_FILE.bin && sudo chmod u+x $GA_FILE.bin
+    curl $BUILD_HOST/engops/9.0.0.0/378/$GA_FILE.bin -o $GA_FILE.bin && sudo chmod u+x $GA_FILE.bin
     pwd && ls -al
 
     zip -r -D -v $GA_FILE.zip $GA_FILE.bin && cp $GA_FILE.zip $HOST_GA_FOLDER
