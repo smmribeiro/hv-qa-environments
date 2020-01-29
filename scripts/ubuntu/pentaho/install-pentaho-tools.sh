@@ -97,8 +97,8 @@ if [ ! -z "$1" ]; then
     fi
 
     # https://stackoverflow.com/questions/3510673/find-and-kill-a-process-in-one-line-using-bash-and-regex/3510850#3510850
-    kill $(ps aux | grep '[p]ostgres.bin' | awk '{print $2}')
-    kill $(ps aux | grep '[t]omcat' | awk '{print $2}')
+    kill -9 $(ps aux | grep '[p]ostgres.bin' | awk '{print $2}')
+    kill -9 $(ps aux | grep '[t]omcat' | awk '{print $2}')
 
     if [ "$me" = "root" ] ; then
       su -l vagrant -c "sh $SP_SCRIPT_PATH '$2' '$5'"
@@ -125,8 +125,8 @@ if [ ! -z "$6" ]; then
   fi
 
   # https://stackoverflow.com/questions/3510673/find-and-kill-a-process-in-one-line-using-bash-and-regex/3510850#3510850
-  kill $(ps aux | grep '[p]ostgres.bin' | awk '{print $2}')
-  kill $(ps aux | grep '[t]omcat' | awk '{print $2}')
+  kill -9 $(ps aux | grep '[p]ostgres.bin' | awk '{print $2}')
+  kill -9 $(ps aux | grep '[t]omcat' | awk '{print $2}')
 
   if [ "$me" = "root" ] ; then
     su -l vagrant -c "sh $DIST_SCRIPT_PATH '$6'"

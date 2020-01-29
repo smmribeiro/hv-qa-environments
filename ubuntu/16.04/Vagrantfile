@@ -67,8 +67,8 @@ Vagrant.configure("2") do |config|
 	config.vm.provision :shell, path: "./../../scripts/ubuntu/install-gui.sh", args: [vagrant_config['os_version']]
 	config.vm.provision :shell, path: "./../../scripts/ubuntu/install-gnome-terminal.sh"
 	config.vm.provision :shell, path: "./../../scripts/ubuntu/install-java.sh", args: [vagrant_config['java_version'], vagrant_config['os_version']]
-	config.vm.provision :shell, path: "./../../scripts/ubuntu/install-chrome.sh"
 	config.vm.provision :shell, path: "./../../scripts/ubuntu/extras.sh", args: [vagrant_config['os_version']]
+	config.vm.provision :shell, path: "./../../scripts/ubuntu/install-chrome.sh"
 	config.vm.provision :shell, path: "./../../scripts/ubuntu/nocrc/compile-automated-tests.sh"
 	config.vm.provision :shell, path: "./../../scripts/ubuntu/change-ubuntu-password.sh"
 	config.vm.provision :reload
