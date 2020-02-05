@@ -9,7 +9,13 @@ else
 fi
 
 export INSTALLERS_BASE=/host/builds/sp/
-export PENTAHO_TO_PATCH=/home/vagrant/Pentaho/
+
+if [ -z "$3" ]; then
+  export PENTAHO_TO_PATCH=/home/vagrant/Pentaho/
+else
+  export PENTAHO_TO_PATCH=$3
+fi
+
 export PATCH_VERSION=$INPUT_PATCH_VERSION
 export LOG_BASE=/host/logs/$PATCH_VERSION
 
@@ -21,8 +27,8 @@ else
 fi
 
 # https://stackoverflow.com/questions/3510673/find-and-kill-a-process-in-one-line-using-bash-and-regex/3510850#3510850
-kill -9 $(ps aux | grep '[p]ostgres.bin' | awk '{print $2}')
-kill -9 $(ps aux | grep '[t]omcat' | awk '{print $2}')
+sudo kill -9 $(ps aux | grep '[p]ostgres.bin' | awk '{print $2}')
+sudo kill -9 $(ps aux | grep '[t]omcat' | awk '{print $2}')
 
 echo "Patching pentaho-server with $PATCH_VERSION"
 $INSTALLERS_BASE/PentahoServer-SP-$PATCH_VERSION.bin -i silent -DEULA_ACCEPT=true -DUSER_INSTALL_DIR=$PENTAHO_TO_PATCH/server/pentaho-server -DSILENT_LOG=$LOG_BASE/pentaho-server.log
