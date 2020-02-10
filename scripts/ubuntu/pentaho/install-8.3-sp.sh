@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# $1 = patch version to be applied (Could include things like -v1, -v2 when mutiple builds of the same SP present)
+# $2 = optional, defined to enforce the base version when $1 has -v1, -v2...
+# $3 = optional, used to define a different installation folder than the default one
+
 if [ -z "$1" ]; then
   INPUT_PATCH_VERSION=8.3.0.7-683
   echo "patch version defaulted to $INPUT_PATCH_VERSION"
@@ -11,7 +15,7 @@ fi
 export INSTALLERS_BASE=/host/builds/sp/
 
 if [ -z "$3" ]; then
-  export PENTAHO_TO_PATCH=/home/vagrant/Pentaho/
+  export PENTAHO_TO_PATCH=/home/vagrant/Pentaho
 else
   export PENTAHO_TO_PATCH=$3
 fi
@@ -49,13 +53,13 @@ echo "Patching schema-workbench with $PATCH_VERSION"
 $INSTALLERS_BASE/SchemaWorkbench-SP-$PATCH_VERSION.bin -i silent -DEULA_ACCEPT=true -DUSER_INSTALL_DIR=$PENTAHO_TO_PATCH/design-tools/schema-workbench -DSILENT_LOG=$LOG_BASE/schema-workbench.log
 
 # delete Karaf caches
-rm -rf /home/vagrant/Pentaho/design-tools/data-integration/system/karaf/caches
-rm -rf /home/vagrant/Pentaho/server/pentaho-server/pentaho-solutions/system/karaf/caches
+rm -rf $PENTAHO_TO_PATCH/design-tools/data-integration/system/karaf/caches
+rm -rf $PENTAHO_TO_PATCH/server/pentaho-server/pentaho-solutions/system/karaf/caches
 
 # validate installation of service pack
 
 if [ -z "$2" ]; then
-  find /home/vagrant/Pentaho/*/*/.patch_archive/$PATCH_VERSION/ -name *.log | while read FILE; do echo $FILE && cat $FILE | grep Successes && cat $FILE | grep Warnings && cat $FILE | grep NonFatalErrors && cat $FILE | grep FatalErrors && echo "" ; done
+  find $PENTAHO_TO_PATCH/*/*/.patch_archive/$PATCH_VERSION/ -name *.log | while read FILE; do echo $FILE && cat $FILE | grep Successes && cat $FILE | grep Warnings && cat $FILE | grep NonFatalErrors && cat $FILE | grep FatalErrors && echo "" ; done
 else
-  find /home/vagrant/Pentaho/*/*/.patch_archive/$2/ -name *.log | while read FILE; do echo $FILE && cat $FILE | grep Successes && cat $FILE | grep Warnings && cat $FILE | grep NonFatalErrors && cat $FILE | grep FatalErrors && echo "" ; done
+  find $PENTAHO_TO_PATCH/*/*/.patch_archive/$2/ -name *.log | while read FILE; do echo $FILE && cat $FILE | grep Successes && cat $FILE | grep Warnings && cat $FILE | grep NonFatalErrors && cat $FILE | grep FatalErrors && echo "" ; done
 fi
