@@ -8,7 +8,7 @@ configs:
     test:
       major: '7.1'
       minor: '7.1.0.26-212'
-    base_os: 'ubuntu/bionic64'
+    patch_version_override_path: ''
     box_version: '20190621.0.0'
     disk_size: '20GB'
     os_version: '18.04'

@@ -8,7 +8,7 @@ configs:
     test:
       major: 'VM_TEST_MAJOR_VERSION'
       minor: 'VM_TEST_MINOR_VERSION'
-    base_os: 'VM_BASE_OS'
+    patch_version_override_path: ''
     box_version: 'VM_BOX_VERSION'
     disk_size: '20GB'
     os_version: 'VM_OS_VERSION'
