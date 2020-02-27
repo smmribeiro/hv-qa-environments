@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GA_FILE=pentaho-business-analytics-9.0.0.0-378-x64
+GA_FILE=pentaho-business-analytics-9.0.0.0-423-x64
 HOST_GA_FOLDER=/host/builds/business-analytics/
 HOST_ZIP_FILE=$HOST_GA_FOLDER$GA_FILE.zip
 BUILD_HOST=http://build.pentaho.net/hosted
