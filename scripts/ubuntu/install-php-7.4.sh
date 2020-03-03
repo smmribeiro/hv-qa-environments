@@ -41,3 +41,5 @@ more /etc/php/7.4/mods-available/xdebug.ini
 # xdebug.remote_host=192.168.0.111
 # xdebug.remote_port=9000
 # xdebug.show_error_trace=1
+
+# export XDEBUG_CONFIG="idekey=PHPSTORM"
