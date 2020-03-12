@@ -33,4 +33,7 @@ fi
 echo "installing 9.0 no questions"
 printf '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ny\n1\n\n1234567890\n1234567890\n\nn\nn\n' | ./$GA_FILE.bin
 
+cd /home/vagrant/Pentaho/design-tools/data-integration
+cp ADDITIONAL-FILES/drivers/* ./drivers/
+
 rm -rf $GA_FILE.*

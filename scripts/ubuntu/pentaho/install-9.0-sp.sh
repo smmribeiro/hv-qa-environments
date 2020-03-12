@@ -38,23 +38,41 @@ else
   kill -9 $(ps aux | grep '[t]omcat' | awk '{print $2}')
 fi
 
-echo "Patching pentaho-server with $PATCH_VERSION"
-$INSTALLERS_BASE/PentahoServer-SP-$PATCH_VERSION.bin -i silent -DEULA_ACCEPT=true -DUSER_INSTALL_DIR=$PENTAHO_TO_PATCH/server/pentaho-server -DSILENT_LOG=$LOG_BASE/pentaho-server.log
+FILE=$INSTALLERS_BASE/PentahoServer-SP-$PATCH_VERSION.bin
+if test -f "$FILE"; then
+  echo "Patching pentaho-server with $PATCH_VERSION"
+  $FILE -i silent -DEULA_ACCEPT=true -DUSER_INSTALL_DIR=$PENTAHO_TO_PATCH/server/pentaho-server -DSILENT_LOG=$LOG_BASE/pentaho-server.log
+fi
 
-echo "Patching aggregation-designer with $PATCH_VERSION"
-$INSTALLERS_BASE/AggregationDesigner-SP-$PATCH_VERSION.bin -i silent -DEULA_ACCEPT=true -DUSER_INSTALL_DIR=$PENTAHO_TO_PATCH/design-tools/aggregation-designer -DSILENT_LOG=$LOG_BASE/aggregation-designer.log
+FILE=$INSTALLERS_BASE/AggregationDesigner-SP-$PATCH_VERSION.bin
+if test -f "$FILE"; then
+  echo "Patching aggregation-designer with $PATCH_VERSION"
+  $FILE -i silent -DEULA_ACCEPT=true -DUSER_INSTALL_DIR=$PENTAHO_TO_PATCH/design-tools/aggregation-designer -DSILENT_LOG=$LOG_BASE/aggregation-designer.log
+fi
 
-echo "Patching data-integration with $PATCH_VERSION"
-$INSTALLERS_BASE/PDIClient-SP-$PATCH_VERSION.bin -i silent -DEULA_ACCEPT=true -DUSER_INSTALL_DIR=$PENTAHO_TO_PATCH/design-tools/data-integration -DSILENT_LOG=$LOG_BASE/data-integration.log
+FILE=$INSTALLERS_BASE/PDIClient-SP-$PATCH_VERSION.bin
+if test -f "$FILE"; then
+  echo "Patching data-integration with $PATCH_VERSION"
+  $FILE -i silent -DEULA_ACCEPT=true -DUSER_INSTALL_DIR=$PENTAHO_TO_PATCH/design-tools/data-integration -DSILENT_LOG=$LOG_BASE/data-integration.log
+fi
 
-echo "Patching metadata-editor with $PATCH_VERSION"
-$INSTALLERS_BASE/MetadataEditor-SP-$PATCH_VERSION.bin -i silent -DEULA_ACCEPT=true -DUSER_INSTALL_DIR=$PENTAHO_TO_PATCH/design-tools/metadata-editor -DSILENT_LOG=$LOG_BASE/metadata-editor.log
+FILE=$INSTALLERS_BASE/MetadataEditor-SP-$PATCH_VERSION.bin
+if test -f "$FILE"; then
+  echo "Patching metadata-editor with $PATCH_VERSION"
+  $FILE -i silent -DEULA_ACCEPT=true -DUSER_INSTALL_DIR=$PENTAHO_TO_PATCH/design-tools/metadata-editor -DSILENT_LOG=$LOG_BASE/metadata-editor.log
+fi
 
-echo "Patching report-designer with $PATCH_VERSION"
-$INSTALLERS_BASE/ReportDesigner-SP-$PATCH_VERSION.bin -i silent -DEULA_ACCEPT=true -DUSER_INSTALL_DIR=$PENTAHO_TO_PATCH/design-tools/report-designer -DSILENT_LOG=$LOG_BASE/report-designer.log
+FILE=$INSTALLERS_BASE/ReportDesigner-SP-$PATCH_VERSION.bin
+if test -f "$FILE"; then
+  echo "Patching report-designer with $PATCH_VERSION"
+  $FILE -i silent -DEULA_ACCEPT=true -DUSER_INSTALL_DIR=$PENTAHO_TO_PATCH/design-tools/report-designer -DSILENT_LOG=$LOG_BASE/report-designer.log
+fi
 
-echo "Patching schema-workbench with $PATCH_VERSION"
-$INSTALLERS_BASE/SchemaWorkbench-SP-$PATCH_VERSION.bin -i silent -DEULA_ACCEPT=true -DUSER_INSTALL_DIR=$PENTAHO_TO_PATCH/design-tools/schema-workbench -DSILENT_LOG=$LOG_BASE/schema-workbench.log
+FILE=$INSTALLERS_BASE/SchemaWorkbench-SP-$PATCH_VERSION.bin
+if test -f "$FILE"; then
+  echo "Patching schema-workbench with $PATCH_VERSION"
+  $FILE -i silent -DEULA_ACCEPT=true -DUSER_INSTALL_DIR=$PENTAHO_TO_PATCH/design-tools/schema-workbench -DSILENT_LOG=$LOG_BASE/schema-workbench.log
+fi
 
 # delete Karaf caches
 rm -rf /home/vagrant/Pentaho/design-tools/data-integration/system/karaf/caches
