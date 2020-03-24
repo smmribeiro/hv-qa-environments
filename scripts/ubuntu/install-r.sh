@@ -30,3 +30,13 @@ sudo apt install -y r-base
 
 # To verify that the installation was successful run the following command which will print the R version:
 R --version
+
+export R_HOME="/usr/lib/R" && echo $R_HOME
+export R_LIBS_USER=/usr/lib/R/lib/ && echo $R_LIBS_USER
+export LD_LIBRARY_PATH=/usr/lib/R/lib/ && echo $LD_LIBRARY_PATH
+
+sudo R CMD javareconf
+
+# sudo R
+# install.packages("rJava", lib = "/usr/lib/R/lib/")
+# ls -al /usr/lib/R/lib/
