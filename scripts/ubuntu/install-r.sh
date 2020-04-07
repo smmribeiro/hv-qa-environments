@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# https://www.linuxuprising.com/2018/07/how-to-fix-could-not-get-lock.html
+# How To Fix `Could not get lock /var/lib/dpkg/lock - open (11 Resource temporarily unavailable)` Errors
+sudo rm /var/lib/apt/lists/lock
+
 # Install the packages necessary to add a new repository over HTTPS:
 sudo apt install -y apt-transport-https software-properties-common
 
