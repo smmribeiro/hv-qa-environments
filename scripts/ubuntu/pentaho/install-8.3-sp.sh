@@ -1,14 +1,19 @@
 #!/bin/bash
 
 if [ -z "$1" ]; then
-  INPUT_PATCH_VERSION=8.3.0.9-749
+  INPUT_PATCH_VERSION=8.3.0.10-816
   echo "patch version defaulted to $INPUT_PATCH_VERSION"
 else
   INPUT_PATCH_VERSION=$1
   echo "patch version defined by user as $INPUT_PATCH_VERSION"
 fi
 
-export INSTALLERS_BASE=/host/builds/sp/
+if [ -z "$2" ]; then
+  export INSTALLERS_BASE=/host/builds/sp/
+else
+  export INSTALLERS_BASE=$2
+fi
+
 export PENTAHO_TO_PATCH=/home/vagrant/Pentaho/
 export PATCH_VERSION=$INPUT_PATCH_VERSION
 export LOG_BASE=/host/logs/$PATCH_VERSION
@@ -79,9 +84,4 @@ rm -rf /home/vagrant/Pentaho/design-tools/data-integration/system/karaf/caches
 rm -rf /home/vagrant/Pentaho/server/pentaho-server/pentaho-solutions/system/karaf/caches
 
 # validate installation of service pack
-
-if [ -z "$2" ]; then
-  find /home/vagrant/Pentaho/*/*/.patch_archive/$PATCH_VERSION/ -name *.log | while read FILE; do echo $FILE && cat $FILE | grep Successes && cat $FILE | grep Warnings && cat $FILE | grep NonFatalErrors && cat $FILE | grep FatalErrors && echo "" ; done
-else
-  find /home/vagrant/Pentaho/*/*/.patch_archive/$2/ -name *.log | while read FILE; do echo $FILE && cat $FILE | grep Successes && cat $FILE | grep Warnings && cat $FILE | grep NonFatalErrors && cat $FILE | grep FatalErrors && echo "" ; done
-fi
+find /home/vagrant/Pentaho/*/*/.patch_archive/$PATCH_VERSION/ -name *.log | while read FILE; do echo $FILE && cat $FILE | grep Successes && cat $FILE | grep Warnings && cat $FILE | grep NonFatalErrors && cat $FILE | grep FatalErrors && echo "" ; done
