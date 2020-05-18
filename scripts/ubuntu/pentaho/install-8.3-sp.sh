@@ -14,6 +14,8 @@ else
   export INSTALLERS_BASE=$2
 fi
 
+echo "using service pack files from $INSTALLERS_BASE"
+
 export PENTAHO_TO_PATCH=/home/vagrant/Pentaho/
 export PATCH_VERSION=$INPUT_PATCH_VERSION
 export LOG_BASE=/host/logs/$PATCH_VERSION
