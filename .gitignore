@@ -26,6 +26,7 @@
 !scripts/ubuntu/nocrc/.gitignore
 !scripts/ubuntu/nocrc/README.md
 !scripts/ubuntu/pentaho/
+!scripts/ubuntu/pentaho/*.cfg
 !scripts/ubuntu/pentaho/*.sh
 !scripts/ubuntu/.gitignore
 !scripts/ubuntu/*.sh
