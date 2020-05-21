@@ -9,8 +9,7 @@ if [ ! -z $(grep "$STRING" "$DI_FILE") ]; then
   echo "karaf console already enabled for Data Integration"
 else
   echo "karaf console not enabled yet for Data Integration"
-  cp /host/scripts/ubuntu/pentaho/pdi-org.apache.karaf.features.cfg $DI_FILE
-  echo "karaf features config file updated, karaf console enabled for Data Integration"
+  sed -i "/^featuresBoot=.*/a \ \ $STRING,\\\\" $DI_FILE
 fi
 
 ME_FILE="/home/vagrant/Pentaho/design-tools/metadata-editor/system/karaf/etc/org.apache.karaf.features.cfg"
@@ -20,8 +19,7 @@ if [ ! -z $(grep "$STRING" "$ME_FILE") ]; then
   echo "karaf console already enabled for Metadata Editor"
 else
   echo "karaf console not enabled yet for Metadata Editor"
-  cp /host/scripts/ubuntu/pentaho/pme-org.apache.karaf.features.cfg $ME_FILE
-  echo "karaf features config file updated, karaf console enabled for Metadata Editor"
+  sed -i "/^featuresBoot=.*/a \ \ $STRING,\\\\" $ME_FILE
 fi
 
 # delete Karaf caches
