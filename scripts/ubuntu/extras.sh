@@ -17,6 +17,8 @@ sudo apt-get install -y unzip > /dev/null 2>&1
 
 sudo apt-get install ubuntu-cleaner > /dev/null 2>&1
 
+sudo apt-get install -y ffmpeg
+
 sudo apt-get install -y snap
 sudo snap install notepad-plus-plus
 
