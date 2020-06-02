@@ -22,6 +22,8 @@ sudo apt install -y php7.4-common php7.4-mysql php7.4-xml php7.4-xmlrpc php7.4-c
 
 sudo apt-get install -y php7.4-sqlite
 
+sudp apt-get install -y php7.4-pgsql
+
 # Install Xdebug
 
 sudo apt-get install -y php-xdebug
