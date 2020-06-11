@@ -46,5 +46,9 @@ rm -rf /home/vagrant/Pentaho/server/pentaho-server/pentaho-solutions/system/kara
 
 # vim /home/vagrant/.ssh/known_hosts
 # delete entry
+
 # ssh -p 8802 karaf@localhost -oHostKeyAlgorithms=+ssh-dss
 # use "karaf" as password
+
+# ssh -p 8802 admin@localhost -oHostKeyAlgorithms=+ssh-dss
+# use "password" as password
