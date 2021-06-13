@@ -15,18 +15,14 @@ sudo apt-get -y install google-chrome-stable
 echo "installing chrome driver"
 
 # Install ChromeDriver
-wget --no-check-certificate --quiet https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip -O /tmp/chromedriver_linux64.zip
-unzip /tmp/chromedriver_linux64.zip -d /tmp/
-sudo mv /tmp/chromedriver /usr/bin/chromedriver
+LATEST_RELEASE=$(wget https://chromedriver.storage.googleapis.com/LATEST_RELEASE -q -O -)
+echo $LATEST_RELEASE
+
+URL=https://chromedriver.storage.googleapis.com/$LATEST_RELEASE/chromedriver_linux64.zip
+echo $URL
+
+wget --no-check-certificate --quiet $URL -O /host/shared/chromedriver_linux64.zip
+sudo unzip /host/shared/chromedriver_linux64.zip -d /host/shared/
+sudo mv /host/shared/chromedriver /usr/bin/chromedriver
 sudo chown root:root /usr/bin/chromedriver
 sudo chmod +x /usr/bin/chromedriver
-
-echo "downloading selenium server jar file"
-
-FILE=/host/java/selenium-server-standalone-3.13.0.jar
-
-if [ -f "$FILE" ]; then
-  echo "$FILE exists, moving on"
-else
-  curl --silent https://selenium-release.storage.googleapis.com/3.13/selenium-server-standalone-3.13.0.jar -o $FILE
-fi

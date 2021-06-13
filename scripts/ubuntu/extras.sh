@@ -23,29 +23,3 @@ sudo apt install -y webp
 
 sudo apt-get install -y snap
 sudo snap install notepad-plus-plus
-
-if [ "$UBUNTU_VERSION" = "18.04" ] ; then
-  sudo apt-get install -y python > /dev/null 2>&1
-  sudo python --version
-
-  sudo apt-get install -y python-pip
-  sudo pip --version
-
-  sudo python -m pip install jupyter
-  sudo jupyter --version
-
-  # https://jupyter-notebook.readthedocs.io/en/latest/config.html
-  runuser -l vagrant -c 'jupyter notebook --generate-config'
-
-  # vim /home/vagrant/.jupyter/jupyter_notebook_config.py
-
-  more /home/vagrant/.jupyter/jupyter_notebook_config.py | grep "c.NotebookApp.allow_origin"
-  sed -i "s/#c.NotebookApp.allow_origin = ''/c.NotebookApp.allow_origin = '*'/g" /home/vagrant/.jupyter/jupyter_notebook_config.py
-  more /home/vagrant/.jupyter/jupyter_notebook_config.py | grep "c.NotebookApp.allow_origin"
-
-  more /home/vagrant/.jupyter/jupyter_notebook_config.py | grep "c.NotebookApp.ip"
-  sed -i "s/#c.NotebookApp.ip = 'localhost'/c.NotebookApp.ip = '0.0.0.0'/g" /home/vagrant/.jupyter/jupyter_notebook_config.py
-  more /home/vagrant/.jupyter/jupyter_notebook_config.py | grep "c.NotebookApp.ip"
-
-  # jupyter notebook
-fi
